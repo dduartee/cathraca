@@ -1,10 +1,16 @@
-//funcao para cadastrar uma digital
-
+uint8_t readnumber(void) {
+  uint8_t num = 0;
+  
+  while (num == 0) {
+    while (! Serial.available());
+    num = Serial.parseInt();
+  }
+  return num;
+}
 void cadastraDigital(){
   
-    Serial.println(F("Digite um numero de 1 a 127 para salvar o ID da digital"));
+    Serial.println(F("Digite um numero de 0 a 99 para salvar o ID da digital"));
     uint8_t IDgravar = readnumber();
-
     
   int p = -1;
   Serial.print(F("Esperando uma leitura válida para gravar #")); Serial.println(IDgravar);
